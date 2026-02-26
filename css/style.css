@@ -856,15 +856,60 @@ img { max-width: 100%; height: auto; display: block; }
   transition: opacity 0.2s;
 }
 
-/* ---- LAYOUT STABILITY: fix min-height on bilingual elements ---- */
-[data-en][data-zh] {
-  min-height: 0;
+/* ====================================================
+   LAYOUT STABILITY — bilingual consistency fixes
+   ==================================================== */
+
+/* 1. page-title: fixed height + border-bottom always visible */
+.page-title {
+  display: block !important;       /* full-width block, no inline shrink */
+  width: 100% !important;
+  min-height: 2.8rem !important;   /* enough for both EN and ZH text */
+  line-height: 1.3 !important;
+  padding-bottom: 0.6rem !important;
+  border-bottom: 3px solid var(--primary) !important;
+  margin-bottom: 0.5rem !important;
 }
-/* Prevent layout shift: all section titles keep the same line-height */
-.section-title, .cv-section-title, .page-title, .subsection-title {
-  min-height: 1.4em;
+
+/* 2. section-title: fixed height + ::after underline always present */
+.section-title {
+  display: block !important;       /* block so width is stable */
+  width: fit-content !important;   /* shrink to text width */
+  min-height: 2.2rem !important;
+  line-height: 1.3 !important;
+  padding-bottom: 0 !important;    /* spacing handled by ::after margin */
+  margin-bottom: 0.8rem !important;
 }
-/* About section: fix two-column layout so photo stays right on lang switch */
+.section-title::after {
+  content: '' !important;
+  display: block !important;
+  width: 100% !important;
+  height: 3px !important;
+  background: var(--primary) !important;
+  margin-top: 0.35rem !important;
+  border-radius: 2px !important;
+}
+
+/* 3. cv-section-title: same treatment */
+.cv-section-title {
+  display: block !important;
+  min-height: 2rem !important;
+  line-height: 1.3 !important;
+}
+
+/* 4. subsection-title */
+.subsection-title {
+  min-height: 1.5rem !important;
+  line-height: 1.4 !important;
+}
+
+/* 5. page-subtitle: fixed min-height so content below doesn't jump */
+.page-subtitle {
+  display: block !important;
+  min-height: 3rem !important;
+}
+
+/* 6. About section: two-column layout stays stable */
 .about-container {
   display: flex !important;
   align-items: flex-start !important;
@@ -877,4 +922,9 @@ img { max-width: 100%; height: auto; display: block; }
 .about-photo {
   flex: 0 0 220px !important;
   width: 220px !important;
+}
+
+/* 7. All bilingual text elements: prevent height collapse */
+[data-en][data-zh] {
+  min-height: 0;
 }
