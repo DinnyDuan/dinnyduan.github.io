@@ -827,29 +827,29 @@ img { max-width: 100%; height: auto; display: block; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: auto;
+  height: auto;
   border: none;
   background: transparent;
   cursor: pointer;
-  padding: 2px;
-  margin-right: 4px;
-  border-radius: 10px;
-  transition: transform 0.18s, filter 0.18s;
+  padding: 0.3rem 0.4rem;
+  margin-right: 0;
+  border-radius: 4px;
+  transition: color 0.2s;
   vertical-align: middle;
   flex-shrink: 0;
+  color: var(--text-light);
 }
 .lang-toggle-btn:hover {
-  transform: scale(1.12);
-  filter: brightness(1.08) drop-shadow(0 2px 6px rgba(0,0,0,0.18));
+  color: var(--primary);
 }
 .lang-toggle-btn:active {
   transform: scale(0.96);
 }
 .lang-toggle-btn svg {
   display: block;
-  width: 36px;
-  height: 36px;
+  width: 1.05rem;
+  height: 1.05rem;
 }
 .lang-toggle-btn .bubble-a,
 .lang-toggle-btn .bubble-zh {

@@ -1,11 +1,11 @@
 /**
  * i18n.js — Bilingual (EN/ZH) language switcher
- * Icon style: A/文 speech bubble (like the translate icon)
+ * Icon style: A/文 speech bubble, same size/color as nav Font Awesome icons
  */
 
 (function () {
-  const STORAGE_KEY = 'lang';
-  const DEFAULT_LANG = 'en';
+  var STORAGE_KEY = 'lang';
+  var DEFAULT_LANG = 'en';
 
   function getLang() {
     return localStorage.getItem(STORAGE_KEY) || DEFAULT_LANG;
@@ -16,28 +16,32 @@
   }
 
   function applyLang(lang) {
-    // Update all elements with data-en / data-zh
     document.querySelectorAll('[data-en]').forEach(function (el) {
       var text = lang === 'zh' ? el.getAttribute('data-zh') : el.getAttribute('data-en');
       if (text !== null) el.innerHTML = text;
     });
 
-    // Update html lang attribute
     document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
 
-    // Update toggle button tooltip
     var btn = document.getElementById('lang-toggle-btn');
     if (btn) {
       btn.setAttribute('title', lang === 'zh' ? 'Switch to English' : '切换为中文');
-      // Highlight active bubble
-      var bubbleA = btn.querySelector('.bubble-a');
-      var bubbleZh = btn.querySelector('.bubble-zh');
+      // Update SVG fill colors to reflect active language
+      var bubbleA   = btn.querySelector('.bubble-a rect');
+      var textA     = btn.querySelector('.bubble-a text');
+      var bubbleZh  = btn.querySelector('.bubble-zh rect');
+      var textZh    = btn.querySelector('.bubble-zh text');
       if (lang === 'zh') {
-        bubbleA.style.opacity = '0.55';
-        bubbleZh.style.opacity = '1';
+        // Chinese active: zh bubble uses currentColor (inherits hover), A bubble dimmed
+        if (bubbleA)  bubbleA.setAttribute('fill-opacity', '0.35');
+        if (textA)    textA.setAttribute('fill-opacity', '0.35');
+        if (bubbleZh) bubbleZh.setAttribute('fill-opacity', '1');
+        if (textZh)   textZh.setAttribute('fill-opacity', '1');
       } else {
-        bubbleA.style.opacity = '1';
-        bubbleZh.style.opacity = '0.55';
+        if (bubbleA)  bubbleA.setAttribute('fill-opacity', '1');
+        if (textA)    textA.setAttribute('fill-opacity', '1');
+        if (bubbleZh) bubbleZh.setAttribute('fill-opacity', '0.35');
+        if (textZh)   textZh.setAttribute('fill-opacity', '0.35');
       }
     }
   }
@@ -49,28 +53,30 @@
     applyLang(next);
   }
 
-  /* Build the SVG "A 文" translate icon */
+  /**
+   * Build SVG icon that inherits `currentColor` from the button,
+   * so it automatically matches the nav icon color (#757575) and
+   * turns green on hover — exactly like the Font Awesome icons.
+   *
+   * viewBox 0 0 20 16, rendered at 1.05rem × 1.05rem via CSS.
+   */
   function buildIcon() {
-    // SVG: white bubble with "A" (top-left) + blue bubble with "文" (bottom-right)
     return [
-      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" width="36" height="36" aria-hidden="true">',
-      /* outer rounded rect background */
-      '<rect x="1" y="1" width="42" height="42" rx="10" ry="10" fill="#f0f4f8" stroke="#d0d8e4" stroke-width="1"/>',
-      /* white bubble (A) - top left */
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 18" aria-hidden="true">',
+      /* Left bubble (A) */
       '<g class="bubble-a">',
-      '<rect x="5" y="6" width="20" height="17" rx="5" ry="5" fill="white" filter="url(#shadow)"/>',
-      '<polygon points="9,23 14,23 9,28" fill="white"/>',
-      '<text x="15" y="19" text-anchor="middle" font-size="11" font-weight="700" fill="#3a3a4a" font-family="Georgia,serif">A</text>',
+      '  <rect x="0.5" y="0.5" width="12" height="10" rx="2.5" ry="2.5" fill="currentColor" stroke="none"/>',
+      '  <polygon points="2,10.5 5,10.5 2,14" fill="currentColor"/>',
+      '  <text x="6.5" y="9" text-anchor="middle" font-size="7" font-weight="700"',
+      '        fill="white" font-family="Georgia,serif" dominant-baseline="auto">A</text>',
       '</g>',
-      /* blue bubble (文) - bottom right */
+      /* Right bubble (文) */
       '<g class="bubble-zh">',
-      '<rect x="19" y="21" width="20" height="17" rx="5" ry="5" fill="#6bbfdb"/>',
-      '<polygon points="35,38 30,38 35,43" fill="#6bbfdb"/>',
-      '<text x="29" y="34" text-anchor="middle" font-size="11" font-weight="700" fill="white" font-family="sans-serif">文</text>',
+      '  <rect x="9.5" y="7.5" width="12" height="10" rx="2.5" ry="2.5" fill="currentColor" stroke="none"/>',
+      '  <polygon points="20,17.5 17,17.5 20,21" fill="currentColor"/>',
+      '  <text x="15.5" y="16" text-anchor="middle" font-size="7" font-weight="700"',
+      '        fill="white" font-family="sans-serif" dominant-baseline="auto">文</text>',
       '</g>',
-      '<defs><filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">',
-      '<feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="#00000022"/>',
-      '</filter></defs>',
       '</svg>'
     ].join('');
   }
