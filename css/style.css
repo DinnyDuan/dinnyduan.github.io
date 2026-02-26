@@ -691,3 +691,133 @@ img { max-width: 100%; height: auto; display: block; }
   .main-content { padding: 1.5rem 1rem 2rem; }
   .section-title { font-size: 1.25rem; }
 }
+
+/* ---- CV PAGE ---- */
+.cv-section {
+  margin-bottom: 2.5rem;
+}
+.cv-section-title {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  color: var(--primary-dark);
+  border-bottom: 2px solid var(--primary-light);
+  padding-bottom: 0.4rem;
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.cv-block {
+  padding: 0 0.5rem;
+}
+.cv-block p {
+  margin-bottom: 0.8rem;
+  color: var(--text-mid);
+}
+.cv-entry {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 1rem;
+  margin-bottom: 1.4rem;
+  padding-bottom: 1.4rem;
+  border-bottom: 1px solid var(--border);
+}
+.cv-entry:last-child {
+  border-bottom: none;
+}
+.cv-entry-left {
+  padding-top: 0.2rem;
+}
+.cv-date {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.cv-entry-right h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 0.3rem;
+}
+.cv-entry-right p {
+  font-size: 0.92rem;
+  color: var(--text-mid);
+  margin-bottom: 0.2rem;
+}
+.cv-location {
+  font-size: 0.82rem !important;
+  color: var(--text-light) !important;
+}
+.cv-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  margin-top: 0.5rem;
+}
+.cv-table th {
+  background: var(--bg-light);
+  color: var(--text-mid);
+  font-weight: 700;
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+  border-bottom: 2px solid var(--border);
+}
+.cv-table td {
+  padding: 0.65rem 0.8rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-mid);
+  vertical-align: middle;
+}
+.cv-table tr:last-child td {
+  border-bottom: none;
+}
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.badge-national {
+  background: #e8f5e9;
+  color: #1b5e20;
+}
+.badge-city {
+  background: #e3f2fd;
+  color: #0d47a1;
+}
+.badge-district {
+  background: #fff3e0;
+  color: #e65100;
+}
+.badge-school {
+  background: #f3e5f5;
+  color: #4a148c;
+}
+.pub-note {
+  margin-top: 1.5rem;
+  padding: 1rem 1.2rem;
+  background: var(--bg-light);
+  border-left: 4px solid var(--primary-light);
+  border-radius: var(--radius);
+  font-size: 0.92rem;
+  color: var(--text-mid);
+}
+.campus-roles-list {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+.campus-roles-list li {
+  margin-bottom: 0.4rem;
+  color: var(--text-mid);
+}
+@media (max-width: 600px) {
+  .cv-entry {
+    grid-template-columns: 1fr;
+    gap: 0.3rem;
+  }
+  .cv-table { font-size: 0.82rem; }
+}
