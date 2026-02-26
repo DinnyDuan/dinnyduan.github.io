@@ -821,3 +821,36 @@ img { max-width: 100%; height: auto; display: block; }
   }
   .cv-table { font-size: 0.82rem; }
 }
+
+/* ---- LANGUAGE TOGGLE BUTTON ---- */
+.lang-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid var(--primary);
+  background: transparent;
+  color: var(--primary);
+  font-size: 0.78rem;
+  font-weight: 700;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+  margin-right: 6px;
+  line-height: 1;
+  padding: 0;
+  vertical-align: middle;
+}
+.lang-toggle-btn:hover {
+  background: var(--primary);
+  color: #fff;
+  transform: scale(1.08);
+}
+.lang-toggle-btn .lang-label {
+  pointer-events: none;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0;
+}

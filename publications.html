@@ -13,17 +13,15 @@
   <nav class="navbar" id="navbar">
     <div class="nav-container">
       <a href="index.html" class="nav-brand">Dini Duan</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-        <i class="fas fa-bars"></i>
-      </button>
+      <button class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></button>
       <ul class="nav-links" id="navLinks">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="news.html">News</a></li>
-        <li><a href="publications.html" class="active">Publications</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="teaching.html">Teaching</a></li>
-        <li><a href="cv.html">CV</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="index.html" data-en="Home" data-zh="首页">Home</a></li>
+        <li><a href="news.html" data-en="News" data-zh="动态">News</a></li>
+        <li><a href="publications.html" class="active" data-en="Publications" data-zh="论文">Publications</a></li>
+        <li><a href="projects.html" data-en="Projects" data-zh="项目">Projects</a></li>
+        <li><a href="teaching.html" data-en="Teaching" data-zh="教学">Teaching</a></li>
+        <li><a href="cv.html" data-en="CV" data-zh="简历">CV</a></li>
+        <li><a href="contact.html" data-en="Contact" data-zh="联系">Contact</a></li>
       </ul>
       <div class="nav-social">
         <a href="mailto:dinnyduan@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
@@ -33,8 +31,9 @@
   </nav>
 
   <main class="main-content page-inner">
-    <h1 class="page-title">Publications</h1>
-    <p class="page-subtitle">
+    <h1 class="page-title" data-en="Publications" data-zh="发表论文">Publications</h1>
+    <p class="page-subtitle" data-en="For a complete list, see my <a href='https://scholar.google.com' target='_blank'>Google Scholar</a> profile. My research focuses on human-computer interaction, complex information system visualization, and ergonomics."
+       data-zh="完整论文列表请查看我的 <a href='https://scholar.google.com' target='_blank'>Google Scholar</a> 主页。研究聚焦于人机交互、复杂信息系统可视化与人因工效学。">
       For a complete list, see my <a href="https://scholar.google.com" target="_blank">Google Scholar</a> profile.<br/>
       My research focuses on human-computer interaction, complex information system visualization, and ergonomics.
     </p>
@@ -47,7 +46,8 @@
           <div class="pub-details">
             <span class="pub-title"><a href="#">Human-Machine Collaborative Decision-Making via Visualization</a></span>
             <span class="pub-authors">Dini Duan et al.</span>
-            <span class="pub-conf">M2VIP International Conference, Langfang, China, 2022 — <strong>Oral Presentation &amp; Session Chair (HCI)</strong></span>
+            <span class="pub-conf" data-en="M2VIP International Conference, Langfang, China, 2022 — <strong>Oral Presentation &amp; Session Chair (HCI)</strong>"
+                  data-zh="M2VIP国际会议，廊坊，中国，2022 — <strong>口头报告 &amp; 分会主席（人机交互）</strong>">M2VIP International Conference, Langfang, China, 2022 — <strong>Oral Presentation &amp; Session Chair (HCI)</strong></span>
             <div class="pub-links">
               <a href="#" class="pub-link">[PDF]</a>
               <a href="#" class="pub-link">[Slides]</a>
@@ -65,7 +65,8 @@
           <div class="pub-details">
             <span class="pub-title"><a href="#">Research on Information Visualization Design for Complex Systems</a></span>
             <span class="pub-authors">Dini Duan et al.</span>
-            <span class="pub-conf">HCI International Conference (HCII 2020), Virtual Online, 2020 — <strong>Oral Presentation</strong></span>
+            <span class="pub-conf" data-en="HCI International Conference (HCII 2020), Virtual Online, 2020 — <strong>Oral Presentation</strong>"
+                  data-zh="HCI国际会议（HCII 2020），线上举办，2020 — <strong>口头报告</strong>">HCI International Conference (HCII 2020), Virtual Online, 2020 — <strong>Oral Presentation</strong></span>
             <div class="pub-links">
               <a href="#" class="pub-link">[PDF]</a>
             </div>
@@ -75,15 +76,20 @@
     </section>
 
     <div class="pub-note">
-      <p><i class="fas fa-info-circle"></i> Please <a href="contact.html">contact me</a> or check my <a href="https://scholar.google.com" target="_blank">Google Scholar</a> for the full and up-to-date list of publications.</p>
+      <p data-en="<i class='fas fa-info-circle'></i> Please <a href='contact.html'>contact me</a> or check my <a href='https://scholar.google.com' target='_blank'>Google Scholar</a> for the full and up-to-date list of publications."
+         data-zh="<i class='fas fa-info-circle'></i> 请 <a href='contact.html'>联系我</a> 或查看我的 <a href='https://scholar.google.com' target='_blank'>Google Scholar</a> 获取完整最新论文列表。">
+        <i class="fas fa-info-circle"></i> Please <a href="contact.html">contact me</a> or check my <a href="https://scholar.google.com" target="_blank">Google Scholar</a> for the full and up-to-date list of publications.
+      </p>
     </div>
 
   </main>
 
   <footer class="footer">
-    <p>&copy; 2026 Dini Duan &nbsp;·&nbsp; Built with <i class="fas fa-heart" style="color:#2e7d32"></i> &nbsp;·&nbsp; Hosted on <a href="https://pages.github.com" target="_blank">GitHub Pages</a></p>
+    <p data-en="&copy; 2026 Dini Duan &nbsp;·&nbsp; Built with ❤ &nbsp;·&nbsp; Hosted on <a href='https://pages.github.com' target='_blank'>GitHub Pages</a>"
+       data-zh="&copy; 2026 段的妮 &nbsp;·&nbsp; 用 ❤ 构建 &nbsp;·&nbsp; 托管于 <a href='https://pages.github.com' target='_blank'>GitHub Pages</a>">&copy; 2026 Dini Duan &nbsp;·&nbsp; Built with ❤ &nbsp;·&nbsp; Hosted on <a href="https://pages.github.com" target="_blank">GitHub Pages</a></p>
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/i18n.js"></script>
 </body>
 </html>

@@ -13,17 +13,15 @@
   <nav class="navbar" id="navbar">
     <div class="nav-container">
       <a href="index.html" class="nav-brand">Dini Duan</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-        <i class="fas fa-bars"></i>
-      </button>
+      <button class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></button>
       <ul class="nav-links" id="navLinks">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="news.html">News</a></li>
-        <li><a href="publications.html">Publications</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="teaching.html">Teaching</a></li>
-        <li><a href="cv.html">CV</a></li>
-        <li><a href="contact.html" class="active">Contact</a></li>
+        <li><a href="index.html" data-en="Home" data-zh="首页">Home</a></li>
+        <li><a href="news.html" data-en="News" data-zh="动态">News</a></li>
+        <li><a href="publications.html" data-en="Publications" data-zh="论文">Publications</a></li>
+        <li><a href="projects.html" data-en="Projects" data-zh="项目">Projects</a></li>
+        <li><a href="teaching.html" data-en="Teaching" data-zh="教学">Teaching</a></li>
+        <li><a href="cv.html" data-en="CV" data-zh="简历">CV</a></li>
+        <li><a href="contact.html" class="active" data-en="Contact" data-zh="联系">Contact</a></li>
       </ul>
       <div class="nav-social">
         <a href="mailto:dinnyduan@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
@@ -33,17 +31,18 @@
   </nav>
 
   <main class="main-content page-inner">
-    <h1 class="page-title">Contact</h1>
+    <h1 class="page-title" data-en="Contact" data-zh="联系方式">Contact</h1>
 
     <div class="contact-page-grid">
       <div class="contact-info-block">
-        <h3>Get in Touch</h3>
-        <p>I welcome inquiries from prospective collaborators, students, and anyone interested in my research on human-computer interaction, information visualization, and ergonomics.</p>
+        <h3 data-en="Get in Touch" data-zh="联系我">Get in Touch</h3>
+        <p data-en="I welcome inquiries from prospective collaborators, students, and anyone interested in my research on human-computer interaction, information visualization, and ergonomics."
+           data-zh="欢迎对人机交互、信息可视化和人因工效学感兴趣的合作者、学生及研究人员与我联系。">I welcome inquiries from prospective collaborators, students, and anyone interested in my research on human-computer interaction, information visualization, and ergonomics.</p>
 
         <div class="contact-item">
           <i class="fas fa-envelope contact-icon"></i>
           <div>
-            <strong>Email</strong><br/>
+            <strong data-en="Email" data-zh="邮箱">Email</strong><br/>
             <a href="mailto:dinnyduan@gmail.com">dinnyduan@gmail.com</a>
           </div>
         </div>
@@ -51,10 +50,9 @@
         <div class="contact-item">
           <i class="fas fa-map-marker-alt contact-icon"></i>
           <div>
-            <strong>Office</strong><br/>
-            School of Mechanical Engineering<br/>
-            Southeast University<br/>
-            Nanjing, China
+            <strong data-en="Office" data-zh="地址">Office</strong><br/>
+            <span data-en="School of Mechanical Engineering<br/>Southeast University<br/>Nanjing, China"
+                  data-zh="东南大学<br/>机械工程学院<br/>南京，中国">School of Mechanical Engineering<br/>Southeast University<br/>Nanjing, China</span>
           </div>
         </div>
 
@@ -69,34 +67,39 @@
         <div class="contact-item">
           <i class="fas fa-globe contact-icon"></i>
           <div>
-            <strong>Website</strong><br/>
+            <strong data-en="Website" data-zh="网站">Website</strong><br/>
             <a href="https://dinnyduan.github.io" target="_blank">dinnyduan.github.io</a>
           </div>
         </div>
       </div>
 
       <div class="contact-note-block">
-        <h3>Research Collaboration</h3>
-        <p>I am open to collaborations with researchers in the following areas:</p>
+        <h3 data-en="Research Collaboration" data-zh="学术合作">Research Collaboration</h3>
+        <p data-en="I am open to collaborations with researchers in the following areas:"
+           data-zh="欢迎以下领域的研究者与我合作：">I am open to collaborations with researchers in the following areas:</p>
         <ul>
-          <li>Human-Computer Interaction (HCI)</li>
-          <li>Information Visualization &amp; Visual Analytics</li>
-          <li>Ergonomics &amp; Human Factors Engineering</li>
-          <li>Cognitive Psychology &amp; User Research</li>
-          <li>Physiological Experiment Design (ERP, Eye-tracking)</li>
+          <li data-en="Human-Computer Interaction (HCI)" data-zh="人机交互（HCI）">Human-Computer Interaction (HCI)</li>
+          <li data-en="Information Visualization &amp; Visual Analytics" data-zh="信息可视化与可视分析">Information Visualization &amp; Visual Analytics</li>
+          <li data-en="Ergonomics &amp; Human Factors Engineering" data-zh="人因工效学与人因工程">Ergonomics &amp; Human Factors Engineering</li>
+          <li data-en="Cognitive Psychology &amp; User Research" data-zh="认知心理学与用户研究">Cognitive Psychology &amp; User Research</li>
+          <li data-en="Physiological Experiment Design (ERP, Eye-tracking)" data-zh="生理实验设计（ERP、眼动追踪）">Physiological Experiment Design (ERP, Eye-tracking)</li>
         </ul>
-        <p>If you are interested in collaborating, please email me with a brief description of your research and how it relates to my work.</p>
+        <p data-en="If you are interested in collaborating, please email me with a brief description of your research and how it relates to my work."
+           data-zh="如有合作意向，请发送邮件并附上您的研究简介及与我研究方向的关联说明。">If you are interested in collaborating, please email me with a brief description of your research and how it relates to my work.</p>
 
-        <h3 style="margin-top: 2rem;">For Students</h3>
-        <p>If you are interested in working with me on a research project, please send me your CV and a brief statement of your research interests. I am particularly interested in students with backgrounds in mechanical engineering, design, psychology, or computer science.</p>
+        <h3 style="margin-top: 2rem;" data-en="For Students" data-zh="致有意向的学生">For Students</h3>
+        <p data-en="If you are interested in working with me on a research project, please send me your CV and a brief statement of your research interests. I am particularly interested in students with backgrounds in mechanical engineering, design, psychology, or computer science."
+           data-zh="如果您有意向与我合作开展研究，请发送您的简历及研究兴趣说明。我特别欢迎机械工程、设计学、心理学或计算机科学背景的学生。">If you are interested in working with me on a research project, please send me your CV and a brief statement of your research interests. I am particularly interested in students with backgrounds in mechanical engineering, design, psychology, or computer science.</p>
       </div>
     </div>
   </main>
 
   <footer class="footer">
-    <p>&copy; 2026 Dini Duan &nbsp;·&nbsp; Built with <i class="fas fa-heart" style="color:#2e7d32"></i> &nbsp;·&nbsp; Hosted on <a href="https://pages.github.com" target="_blank">GitHub Pages</a></p>
+    <p data-en="&copy; 2026 Dini Duan &nbsp;·&nbsp; Built with ❤ &nbsp;·&nbsp; Hosted on <a href='https://pages.github.com' target='_blank'>GitHub Pages</a>"
+       data-zh="&copy; 2026 段的妮 &nbsp;·&nbsp; 用 ❤ 构建 &nbsp;·&nbsp; 托管于 <a href='https://pages.github.com' target='_blank'>GitHub Pages</a>">&copy; 2026 Dini Duan &nbsp;·&nbsp; Built with ❤ &nbsp;·&nbsp; Hosted on <a href="https://pages.github.com" target="_blank">GitHub Pages</a></p>
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/i18n.js"></script>
 </body>
 </html>
