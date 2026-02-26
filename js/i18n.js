@@ -1,7 +1,8 @@
 /**
  * i18n.js — Bilingual (EN/ZH) language switcher
- * Icon style: A/文 speech bubble, same size/color as nav Font Awesome icons
- * Title consistency: dynamically adjusts Chinese title letter-spacing to match EN width
+ * - Icon: A/文 speech bubble, same size/color as nav Font Awesome icons
+ * - Nav items: fixed width (EN width) so position stays identical in both languages
+ * - Section titles: dynamic letter-spacing to match EN width
  */
 
 (function () {
@@ -10,6 +11,8 @@
 
   // Store EN widths keyed by element reference
   var enWidthMap = new WeakMap();
+  // Store EN nav-item widths (li elements)
+  var navEnWidths = [];
 
   function getLang() {
     return localStorage.getItem(STORAGE_KEY) || DEFAULT_LANG;
@@ -32,14 +35,34 @@
   }
 
   /**
+   * Capture EN widths for nav <li> items while page shows EN text.
+   * Store the full <li> width so ZH items get the same container width.
+   */
+  function captureNavEnWidths() {
+    navEnWidths = [];
+    var items = document.querySelectorAll('.nav-links li');
+    items.forEach(function (li) {
+      navEnWidths.push(li.getBoundingClientRect().width);
+    });
+  }
+
+  /**
+   * Apply fixed widths to nav <li> items so both languages occupy the same space.
+   */
+  function applyNavFixedWidths() {
+    var items = document.querySelectorAll('.nav-links li');
+    items.forEach(function (li, i) {
+      var w = navEnWidths[i];
+      if (w && w > 0) {
+        li.style.minWidth = w + 'px';
+        li.style.width = w + 'px';
+      }
+    });
+  }
+
+  /**
    * After switching to Chinese, adjust letter-spacing on each .section-title
    * and .page-title so its rendered width equals the stored English width.
-   *
-   * Formula:
-   *   targetWidth = enWidth
-   *   zhBaseWidth = measureTextWidth(el, zhText)   // without any spacing
-   *   charCount   = zhText.length
-   *   letterSpacing = (targetWidth - zhBaseWidth) / charCount
    */
   function adjustZhTitleSpacing() {
     var selectors = '.section-title, .page-title, .subsection-title, .cv-section-title';
@@ -48,7 +71,6 @@
       var enText = el.getAttribute('data-en');
       if (!zhText || !enText) return;
 
-      // Reset spacing first so measurement is clean
       el.style.letterSpacing = '';
 
       var enWidth = enWidthMap.get(el);
@@ -59,7 +81,6 @@
       if (charCount < 1) return;
 
       var spacing = (enWidth - zhBaseWidth) / charCount;
-      // Only add spacing if positive (ZH is narrower than EN)
       if (spacing > 0) {
         el.style.letterSpacing = spacing.toFixed(2) + 'px';
       } else {
@@ -69,14 +90,13 @@
   }
 
   /**
-   * Capture EN widths for all bilingual titles (call once while page is in EN).
+   * Capture EN widths for all bilingual section titles.
    */
   function captureEnWidths() {
     var selectors = '.section-title, .page-title, .subsection-title, .cv-section-title';
     document.querySelectorAll(selectors).forEach(function (el) {
       var enText = el.getAttribute('data-en');
       if (!enText) return;
-      // Reset any previous spacing
       el.style.letterSpacing = '';
       var w = measureTextWidth(el, enText);
       if (w > 0) enWidthMap.set(el, w);
@@ -91,11 +111,13 @@
 
     document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
 
-    // Adjust letter-spacing after content switch
+    // Always apply fixed nav widths (keeps layout stable in both languages)
+    applyNavFixedWidths();
+
+    // Adjust section title letter-spacing
     if (lang === 'zh') {
       adjustZhTitleSpacing();
     } else {
-      // Reset all letter-spacing when switching back to EN
       var selectors = '.section-title, .page-title, .subsection-title, .cv-section-title';
       document.querySelectorAll(selectors).forEach(function (el) {
         el.style.letterSpacing = '';
@@ -162,18 +184,18 @@
       navSocial.insertBefore(btn, navSocial.firstChild);
     }
 
-    // Always capture EN widths first (page starts in EN by default)
-    // If stored lang is ZH, we still capture EN widths before switching
     var storedLang = getLang();
+
+    // If stored lang is ZH, temporarily render EN to capture EN widths
     if (storedLang === 'zh') {
-      // Temporarily ensure EN text is in DOM for measurement
       document.querySelectorAll('[data-en]').forEach(function (el) {
         var enText = el.getAttribute('data-en');
         if (enText !== null) el.innerHTML = enText;
       });
     }
 
-    // Capture EN widths while DOM shows EN content
+    // Capture EN widths for nav items and section titles
+    captureNavEnWidths();
     captureEnWidths();
 
     // Now apply the stored language

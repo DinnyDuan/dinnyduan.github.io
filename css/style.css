@@ -84,6 +84,12 @@ img { max-width: 100%; height: auto; display: block; }
   justify-content: center;
 }
 
+.nav-links li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .nav-links a {
   font-size: 0.9rem;
   font-weight: 600;
@@ -93,6 +99,9 @@ img { max-width: 100%; height: auto; display: block; }
   text-decoration: none;
   letter-spacing: 0.02em;
   transition: color 0.2s, background 0.2s;
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap;
 }
 .nav-links a:hover,
 .nav-links a.active {
