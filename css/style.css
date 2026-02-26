@@ -822,35 +822,59 @@ img { max-width: 100%; height: auto; display: block; }
   .cv-table { font-size: 0.82rem; }
 }
 
-/* ---- LANGUAGE TOGGLE BUTTON ---- */
+/* ---- LANGUAGE TOGGLE BUTTON (A/文 bubble icon) ---- */
 .lang-toggle-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: 2px solid var(--primary);
+  width: 40px;
+  height: 40px;
+  border: none;
   background: transparent;
-  color: var(--primary);
-  font-size: 0.78rem;
-  font-weight: 700;
-  font-family: var(--font-body);
   cursor: pointer;
-  transition: background 0.2s, color 0.2s, transform 0.15s;
-  margin-right: 6px;
-  line-height: 1;
-  padding: 0;
+  padding: 2px;
+  margin-right: 4px;
+  border-radius: 10px;
+  transition: transform 0.18s, filter 0.18s;
   vertical-align: middle;
+  flex-shrink: 0;
 }
 .lang-toggle-btn:hover {
-  background: var(--primary);
-  color: #fff;
-  transform: scale(1.08);
+  transform: scale(1.12);
+  filter: brightness(1.08) drop-shadow(0 2px 6px rgba(0,0,0,0.18));
 }
-.lang-toggle-btn .lang-label {
-  pointer-events: none;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0;
+.lang-toggle-btn:active {
+  transform: scale(0.96);
+}
+.lang-toggle-btn svg {
+  display: block;
+  width: 36px;
+  height: 36px;
+}
+.lang-toggle-btn .bubble-a,
+.lang-toggle-btn .bubble-zh {
+  transition: opacity 0.2s;
+}
+
+/* ---- LAYOUT STABILITY: fix min-height on bilingual elements ---- */
+[data-en][data-zh] {
+  min-height: 0;
+}
+/* Prevent layout shift: all section titles keep the same line-height */
+.section-title, .cv-section-title, .page-title, .subsection-title {
+  min-height: 1.4em;
+}
+/* About section: fix two-column layout so photo stays right on lang switch */
+.about-container {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 3rem !important;
+}
+.about-text {
+  flex: 1 1 0 !important;
+  min-width: 0 !important;
+}
+.about-photo {
+  flex: 0 0 220px !important;
+  width: 220px !important;
 }
