@@ -255,7 +255,7 @@ html[lang="zh-CN"] .nav-links a {
 
 .about-container {
   display: grid;
-  grid-template-columns: 1fr 360px;
+  grid-template-columns: 3fr 2fr;
   gap: 3rem;
   align-items: start;
 }
