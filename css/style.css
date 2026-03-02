@@ -1198,13 +1198,17 @@ html[lang="zh-CN"] .nav-links a {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--primary);
+  color: var(--text-dark);
   margin-bottom: 1.5rem;
   padding-bottom: 0.4rem;
   border-bottom: 2px solid var(--primary);
   display: flex;
   align-items: center;
   gap: 0.6rem;
+}
+
+.cv-section-title i {
+  color: var(--primary);
 }
 
 /* 两列布局：日期在左，内容在右 */
@@ -1254,14 +1258,7 @@ html[lang="zh-CN"] .nav-links a {
 }
 
 .cv-location {
-  font-size: 0.78rem !important;
-  color: var(--text-light) !important;
-  margin-top: 0.15rem !important;
-}
-
-.cv-location i {
-  font-size: 0.7rem;
-  margin-right: 0.2rem;
+  display: none !important;
 }
 
 /* 纯文字段落区块（About Me、Skills） */
