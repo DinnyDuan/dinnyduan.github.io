@@ -47,45 +47,51 @@
   }
 
   /**
-   * Apply fixed widths to nav <li> items so both languages occupy the same space.
+   * Apply fixed widths on nav <li> items.
+   * EN mode: each li gets its own captured EN width for stability.
+   * ZH mode: all li get the same uniform width (max ZH item width) for even spacing.
    */
-  function applyNavFixedWidths() {
+  function applyNavFixedWidths(lang) {
     var items = document.querySelectorAll('.nav-links li');
-    items.forEach(function (li, i) {
-      var w = navEnWidths[i];
-      if (w && w > 0) {
-        li.style.minWidth = w + 'px';
-        li.style.width = w + 'px';
-      }
-    });
+    if (lang === 'zh') {
+      // Clear inline widths first so browser can reflow to natural ZH sizes
+      items.forEach(function (li) {
+        li.style.minWidth = '';
+        li.style.width = '';
+      });
+      // Measure after reflow, then apply uniform width
+      requestAnimationFrame(function () {
+        var maxW = 0;
+        items.forEach(function (li) {
+          var w = li.getBoundingClientRect().width;
+          if (w > maxW) maxW = w;
+        });
+        if (maxW > 0) {
+          items.forEach(function (li) {
+            li.style.width = maxW + 'px';
+            li.style.minWidth = maxW + 'px';
+          });
+        }
+      });
+    } else {
+      items.forEach(function (li, i) {
+        var w = navEnWidths[i];
+        if (w && w > 0) {
+          li.style.minWidth = w + 'px';
+          li.style.width = w + 'px';
+        }
+      });
+    }
   }
 
   /**
-   * After switching to Chinese, adjust letter-spacing on each .section-title
-   * and .page-title so its rendered width equals the stored English width.
+   * After switching to Chinese, reset letter-spacing on titles to natural.
+   * We no longer stretch Chinese text to match English width.
    */
   function adjustZhTitleSpacing() {
     var selectors = '.section-title, .page-title, .subsection-title, .cv-section-title';
     document.querySelectorAll(selectors).forEach(function (el) {
-      var zhText = el.getAttribute('data-zh');
-      var enText = el.getAttribute('data-en');
-      if (!zhText || !enText) return;
-
-      el.style.letterSpacing = '';
-
-      var enWidth = enWidthMap.get(el);
-      if (!enWidth) return;
-
-      var zhBaseWidth = measureTextWidth(el, zhText);
-      var charCount = zhText.length;
-      if (charCount < 1) return;
-
-      var spacing = (enWidth - zhBaseWidth) / charCount;
-      if (spacing > 0) {
-        el.style.letterSpacing = spacing.toFixed(2) + 'px';
-      } else {
-        el.style.letterSpacing = '';
-      }
+      el.style.letterSpacing = '0';
     });
   }
 
@@ -111,8 +117,13 @@
 
     document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
 
-    // Always apply fixed nav widths (keeps layout stable in both languages)
-    applyNavFixedWidths();
+    // Apply fixed nav widths for EN; clear them for ZH so flex distributes evenly
+    applyNavFixedWidths(lang);
+
+    // Adjust nav link letter-spacing: Chinese characters don't need EN-style tracking
+    document.querySelectorAll('.nav-links a').forEach(function (a) {
+      a.style.letterSpacing = lang === 'zh' ? '0' : '';
+    });
 
     // Adjust section title letter-spacing
     if (lang === 'zh') {
@@ -127,20 +138,20 @@
     var btn = document.getElementById('lang-toggle-btn');
     if (btn) {
       btn.setAttribute('title', lang === 'zh' ? 'Switch to English' : '切换为中文');
-      var bubbleA   = btn.querySelector('.bubble-a rect');
-      var textA     = btn.querySelector('.bubble-a text');
-      var bubbleZh  = btn.querySelector('.bubble-zh rect');
-      var textZh    = btn.querySelector('.bubble-zh text');
+      var bubbleA = btn.querySelector('.bubble-a rect');
+      var textA = btn.querySelector('.bubble-a text');
+      var bubbleZh = btn.querySelector('.bubble-zh rect');
+      var textZh = btn.querySelector('.bubble-zh text');
       if (lang === 'zh') {
-        if (bubbleA)  bubbleA.setAttribute('fill-opacity', '0.35');
-        if (textA)    textA.setAttribute('fill-opacity', '0.35');
+        if (bubbleA) bubbleA.setAttribute('fill-opacity', '0.35');
+        if (textA) textA.setAttribute('fill-opacity', '0.35');
         if (bubbleZh) bubbleZh.setAttribute('fill-opacity', '1');
-        if (textZh)   textZh.setAttribute('fill-opacity', '1');
+        if (textZh) textZh.setAttribute('fill-opacity', '1');
       } else {
-        if (bubbleA)  bubbleA.setAttribute('fill-opacity', '1');
-        if (textA)    textA.setAttribute('fill-opacity', '1');
+        if (bubbleA) bubbleA.setAttribute('fill-opacity', '1');
+        if (textA) textA.setAttribute('fill-opacity', '1');
         if (bubbleZh) bubbleZh.setAttribute('fill-opacity', '0.35');
-        if (textZh)   textZh.setAttribute('fill-opacity', '0.35');
+        if (textZh) textZh.setAttribute('fill-opacity', '0.35');
       }
     }
   }

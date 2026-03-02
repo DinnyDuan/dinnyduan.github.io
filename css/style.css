@@ -116,6 +116,15 @@ img {
   margin: 0;
 }
 
+/* Chinese mode: increase gap and link padding so items aren't too cramped */
+html[lang="zh-CN"] .nav-links {
+  gap: 0.5rem;
+}
+
+html[lang="zh-CN"] .nav-links a {
+  padding: 0 1.25rem;
+}
+
 .nav-links li {
   display: block;
 }
