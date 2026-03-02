@@ -1177,3 +1177,101 @@ html[lang="zh-CN"] .nav-links a {
 [data-en][data-zh] {
   min-height: 0;
 }
+
+/* ================================================
+   CV PAGE STYLES
+   ================================================ */
+
+.cv-section {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.cv-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.cv-section-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* 两列布局：日期在左，内容在右 */
+.cv-entry {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 0.25rem 1.5rem;
+  margin-bottom: 1.1rem;
+  align-items: start;
+}
+
+.cv-entry-left {
+  padding-top: 0.15rem;
+  text-align: right;
+}
+
+.cv-date {
+  font-size: 0.78rem;
+  color: var(--text-light);
+  font-style: italic;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+
+.cv-entry-right h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin: 0 0 0.2rem;
+  line-height: 1.4;
+}
+
+.cv-entry-right h4 a {
+  color: var(--primary-dark);
+  text-decoration: none;
+}
+
+.cv-entry-right h4 a:hover {
+  text-decoration: underline;
+}
+
+.cv-entry-right p {
+  font-size: 0.875rem;
+  color: var(--text-body);
+  margin: 0.1rem 0;
+  line-height: 1.55;
+}
+
+.cv-location {
+  font-size: 0.78rem !important;
+  color: var(--text-light) !important;
+  margin-top: 0.15rem !important;
+}
+
+.cv-location i {
+  font-size: 0.7rem;
+  margin-right: 0.2rem;
+}
+
+/* 纯文字段落区块（About Me、Skills） */
+.cv-block p {
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: var(--text-body);
+  margin-bottom: 0.75rem;
+}
+
+.cv-block p:last-child {
+  margin-bottom: 0;
+}
