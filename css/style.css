@@ -1221,7 +1221,7 @@ html[lang="zh-CN"] .nav-links a {
 }
 
 .cv-entry-left {
-  text-align: right;
+  text-align: left;
 }
 
 .cv-date {
@@ -1233,7 +1233,7 @@ html[lang="zh-CN"] .nav-links a {
 
 .cv-entry-right h4 {
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: 400;
   color: var(--text-dark);
   margin: 0 0 0.2rem;
   line-height: 1.4;
