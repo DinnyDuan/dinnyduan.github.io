@@ -118,11 +118,11 @@ img {
 
 /* Chinese mode: increase gap and link padding so items aren't too cramped */
 html[lang="zh-CN"] .nav-links {
-  gap: 0.5rem;
+  gap: 0.25rem;
 }
 
 html[lang="zh-CN"] .nav-links a {
-  padding: 0 1.25rem;
+  padding: 0 0.85rem;
 }
 
 .nav-links li {
