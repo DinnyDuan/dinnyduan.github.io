@@ -255,12 +255,13 @@ html[lang="zh-CN"] .nav-links a {
 
 .about-container {
   display: grid;
-  grid-template-columns: 1fr 280px;
+  grid-template-columns: 1fr 360px;
   gap: 3rem;
   align-items: start;
 }
 
-.about-text .section-title {
+.about-heading {
+  margin-top: 0;
   margin-bottom: 1rem;
 }
 
@@ -274,11 +275,11 @@ html[lang="zh-CN"] .nav-links a {
 }
 
 .affiliation .position {
-  color: var(--primary-dark);
+  color: var(--text-light);
 }
 
 .affiliation a {
-  color: var(--text-light);
+  color: var(--primary-dark);
 }
 
 .affiliation a:hover {
@@ -293,12 +294,11 @@ html[lang="zh-CN"] .nav-links a {
 
 .profile-img {
   width: 100%;
-  max-width: 280px;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   object-fit: cover;
-  aspect-ratio: 4/5;
-  margin-top: 2.5rem;
+  aspect-ratio: 3/4;
+  margin-top: 1rem;
 }
 
 /* ---- BUTTONS ---- */
