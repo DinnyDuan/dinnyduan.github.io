@@ -1228,7 +1228,6 @@ html[lang="zh-CN"] .nav-links a {
 .cv-date {
   font-size: 0.78rem;
   color: var(--text-light);
-  font-style: italic;
   white-space: nowrap;
   line-height: 1.4;
 }
