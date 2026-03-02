@@ -1222,10 +1222,12 @@ html[lang="zh-CN"] .nav-links a {
 
 .cv-entry-left {
   text-align: left;
+  padding-top: 0;
 }
 
 .cv-date {
   font-size: 0.9rem;
+  font-weight: 400;
   color: var(--text-light);
   white-space: nowrap;
   line-height: 1.4;
